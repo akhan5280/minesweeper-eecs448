@@ -13,6 +13,7 @@ class GameManager {
     // stores current game board object
     this.board;
 	this.revealedArray = []; 
+	this.flaggedArray = [];
     // creates modal manager object
     this.modal_manager = new ModalManager();
 
@@ -75,6 +76,10 @@ cheatMode(){
 			if(cell.getAttribute('isDisplayed') == "true"){
 				this.revealedArray.push([i,j]);
 			}
+			if(cell.getAttribute('flagged') == "true"){
+				this.board.cellFlagged(cell);
+				this.flaggedArray.push([i,j]);
+			}
 			
 		}
 	}
@@ -88,6 +93,11 @@ goBack(){
      
 	for (var i = 0; i < this.revealedArray.length; i++) {
 		this.board.recReveal(this.revealedArray[i][0],this.revealedArray[i][1]);
+	}
+	for (var i = 0; i < this.flaggedArray.length; i++) {
+		var row = table.rows[this.flaggedArray[i][0]];
+		var cell = row.cells[this.flaggedArray[i][1]];
+		this.board.cellFlagged(cell);
 	}
 }
 
