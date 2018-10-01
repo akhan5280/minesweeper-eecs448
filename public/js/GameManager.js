@@ -175,6 +175,9 @@ goBack(){
    */
   newGame(){
 
+	this.inCheatMode = false;
+	this.revealedArray = [];
+	this.flaggedArray = [];
     this.modal_manager.operationReset();
     // resetting stopwatch
     this.stopwatch.reset();
