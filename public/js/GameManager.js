@@ -12,6 +12,7 @@ class GameManager {
 	
     // stores current game board object
     this.board;
+	this.inCheatMode = false;
 	this.revealedArray = []; 
 	this.flaggedArray = [];
     // creates modal manager object
@@ -68,23 +69,26 @@ class GameManager {
   }
   
 cheatMode(){
-  var table = document.getElementById('table_game_board');
-	for (var i = 0; i < this.board.num_rows; i++) {
-		var row = table.rows[i];
-		for (var j = 0; j < this.board.num_cols; j++) {
-			var cell = row.cells[j];
-			if(cell.getAttribute('isDisplayed') == "true"){
-				this.revealedArray.push([i,j]);
+  if(this.inCheatMode == false)
+  {
+	  var table = document.getElementById('table_game_board');
+		for (var i = 0; i < this.board.num_rows; i++) {
+			var row = table.rows[i];
+			for (var j = 0; j < this.board.num_cols; j++) {
+				var cell = row.cells[j];
+				if(cell.getAttribute('isDisplayed') == "true"){
+					this.revealedArray.push([i,j]);
+				}
+				if(cell.getAttribute('flagged') == "true"){
+					this.board.cellFlagged(cell);
+					this.flaggedArray.push([i,j]);
+				}
+				
 			}
-			if(cell.getAttribute('flagged') == "true"){
-				this.board.cellFlagged(cell);
-				this.flaggedArray.push([i,j]);
-			}
-			
 		}
-	}
-	  
-  this.board.displayBoard();
+	  this.inCheatMode = true;
+	  this.board.displayBoard();
+  }
 }
 
 goBack(){
@@ -99,6 +103,7 @@ goBack(){
 		var cell = row.cells[this.flaggedArray[i][1]];
 		this.board.cellFlagged(cell);
 	}
+   this.inCheatMode = false;
 }
 
   /*
