@@ -92,18 +92,23 @@ cheatMode(){
 }
 
 goBack(){
-  this.board.updateGameBoard();
-  var table = document.getElementById('table_game_board');
-     
-	for (var i = 0; i < this.revealedArray.length; i++) {
-		this.board.recReveal(this.revealedArray[i][0],this.revealedArray[i][1]);
-	}
-	for (var i = 0; i < this.flaggedArray.length; i++) {
-		var row = table.rows[this.flaggedArray[i][0]];
-		var cell = row.cells[this.flaggedArray[i][1]];
-		this.board.cellFlagged(cell);
-	}
-   this.inCheatMode = false;
+  if(this.inCheatMode == true)
+	  {
+	  this.board.updateGameBoard();
+	  var table = document.getElementById('table_game_board');
+		 
+		for (var i = 0; i < this.revealedArray.length; i++) {
+			this.board.recReveal(this.revealedArray[i][0],this.revealedArray[i][1]);
+		}
+		for (var i = 0; i < this.flaggedArray.length; i++) {
+			var row = table.rows[this.flaggedArray[i][0]];
+			var cell = row.cells[this.flaggedArray[i][1]];
+			this.board.cellFlagged(cell);
+		}
+	   this.inCheatMode = false;
+	   this.revealedArray = [];
+	   this.flaggedArray = [];
+  }
 }
 
   /*
