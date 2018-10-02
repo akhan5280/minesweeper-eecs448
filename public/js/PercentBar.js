@@ -17,6 +17,7 @@ class PercentBar{
    */
   resetBar(){
     this.cur_done = 0;
+    console.log("set to zero");
     this.updateDisplay()
   }
 
@@ -44,5 +45,15 @@ class PercentBar{
     this.prog_bar.innerHTML = perc;
     this.prog_bar.style.width = perc;
   }
+
+  getPercent(){
+       var perc = Math.round(100*this.cur_done/this.cells);
+       return perc;
+ }
+
+  setPercent(newPercent){
+       this.cur_done = (newPercent*this.cells)/100;
+ }
+
 
 }

@@ -9,12 +9,13 @@ class GameManager {
 
     // instance of stopwatch for timing games
     this.stopwatch = new Stopwatch();
-	
+
     // stores current game board object
     this.board;
 	this.inCheatMode = false;
-	this.revealedArray = []; 
+	this.revealedArray = [];
 	this.flaggedArray = [];
+     this.storedPercent = 0;
     // creates modal manager object
     this.modal_manager = new ModalManager();
 
@@ -67,10 +68,11 @@ class GameManager {
     // calls function to ready config modal
     this.modal_manager.operationConfig();
   }
-  
+
 cheatMode(){
   if(this.inCheatMode == false)
   {
+       this.storedPercent = this.board.percent_bar.getPercent();
 	  var table = document.getElementById('table_game_board');
 		for (var i = 0; i < this.board.num_rows; i++) {
 			var row = table.rows[i];
@@ -83,7 +85,7 @@ cheatMode(){
 					this.board.cellFlagged(cell);
 					this.flaggedArray.push([i,j]);
 				}
-				
+
 			}
 		}
 	  this.inCheatMode = true;
@@ -96,7 +98,7 @@ goBack(){
 	  {
 	  this.board.updateGameBoard();
 	  var table = document.getElementById('table_game_board');
-		 
+
 		for (var i = 0; i < this.revealedArray.length; i++) {
 			this.board.recReveal(this.revealedArray[i][0],this.revealedArray[i][1]);
 		}
@@ -108,6 +110,7 @@ goBack(){
 	   this.inCheatMode = false;
 	   this.revealedArray = [];
 	   this.flaggedArray = [];
+        this.board.percent_bar.setPercent(this.storedPercent);
   }
 }
 
