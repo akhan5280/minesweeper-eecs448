@@ -97,6 +97,7 @@ goBack(){
   if(this.inCheatMode == true)
 	  {
 	  this.board.updateGameBoard();
+    this.board.percent_bar.resetBar();
 	  var table = document.getElementById('table_game_board');
 
 		for (var i = 0; i < this.revealedArray.length; i++) {
@@ -110,7 +111,6 @@ goBack(){
 	   this.inCheatMode = false;
 	   this.revealedArray = [];
 	   this.flaggedArray = [];
-        this.board.percent_bar.setPercent(this.storedPercent);
   }
 }
 
