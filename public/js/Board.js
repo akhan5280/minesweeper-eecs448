@@ -61,7 +61,9 @@ class GameBoard {
       }
     }
   }
-
+  /**
+    * Fills board array with number values and mines
+  */
   populateGameBoard(cell) {
     let firstRow = Number(cell.getAttribute('row'));
     let firstCol = Number(cell.getAttribute('col'));
@@ -103,7 +105,9 @@ class GameBoard {
       }
     }
   }
-
+  /**
+   * redraws game board based on current board array, covers all cells
+  */
   updateGameBoard() {
     var table = document.getElementById('table_game_board');
     $("#table_game_board tr").remove();
@@ -221,6 +225,7 @@ class GameBoard {
    * Calls displayValue() to show cell values and then handles the rules
    * when telling what other cells will need to be cleared due to game rules
    * @param {Object} cell - DOM object of the cell that was clicked
+   * @param {Boolean} recursive - whether cellClicked has been called from clearSurrounding
    * @returns {Boolean} - true if this click caused game lose condition
    */
   cellClicked(cell,recursive=true) {

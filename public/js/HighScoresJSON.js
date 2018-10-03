@@ -125,6 +125,7 @@ class HighScoresJSON{
     * Determines if user has earned a high score to spec of board preset (if any)
     * @param {String} score - the score the user has earned
     * @param {Number} preset_index - the index of the preset the user has selected (if any)
+    * @param {Boolean} hasCheated - whether cheat mode was used during game
     * @return {Promise} resolved with a boolean indicating whether or not the user earned a high score
   */
   checkIfHighScore(score, preset_index, hasCheated) {
