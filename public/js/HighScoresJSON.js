@@ -127,9 +127,9 @@ class HighScoresJSON{
     * @param {Number} preset_index - the index of the preset the user has selected (if any)
     * @return {Promise} resolved with a boolean indicating whether or not the user earned a high score
   */
-  checkIfHighScore(score, preset_index) {
+  checkIfHighScore(score, preset_index, hasCheated) {
     // check to see if user is using board size for high score
-    if (preset_index != undefined) {
+    if (preset_index != undefined && !hasCheated) {
       // retrieve high scores for preset board size
       var callback = $.Deferred();
 

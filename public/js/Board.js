@@ -16,6 +16,7 @@ class GameBoard {
     this.preset_index = preset_index;
     // create percent bar under board
     this.percent_bar = new PercentBar(num_rows*num_cols);
+    this.hasCheated = false;
     this.num_rows = num_rows;
     this.num_cols = num_cols;
     this.mine_count = mine_count;

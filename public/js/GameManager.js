@@ -70,6 +70,7 @@ class GameManager {
   }
 
 cheatMode(){
+  this.board.hasCheated = true;
   if(this.inCheatMode == false)
   {
        this.storedPercent = this.board.percent_bar.getPercent();
@@ -226,7 +227,7 @@ goBack(){
     document.getElementById('submit_score').removeAttribute('disabled');
 
     // wait for caller to pull highscores from myJSON and check if a hs was earned
-    $.when(this.json_caller.checkIfHighScore(score, this.board.preset_index)).done(
+    $.when(this.json_caller.checkIfHighScore(score, this.board.preset_index, this.board.hasCheated)).done(
       (hs_state) => {
         // show win game modal based on if a high score was earned or not
         this.modal_manager.gameWinModal('show', hs_state);
