@@ -38,14 +38,14 @@ class GameBoard {
     }
   }
 
+// displays board to allow user to cheat 
+ 
   displayBoard() {
-
     for(var i = 0; i < this.num_rows; i++) {
       for(var j = 0; j < this.num_cols; j++) {
         this.recReveal(i,j);
       }
     }
-
   }
 
   /**
@@ -106,6 +106,7 @@ class GameBoard {
     }
   }
   /**
+   * Called after uncheat is clicked
    * redraws game board based on current board array, covers all cells
   */
   updateGameBoard() {
@@ -218,7 +219,6 @@ class GameBoard {
   {
     return (this.mine_count == this.flagged_mines);
   }
-
 
 
   /**
