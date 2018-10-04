@@ -49,9 +49,10 @@ class GameManager {
       mine_count = 99;
     }
 
-    // create new instance of game board
+    // create new instance of game board to allow user to cheat and to preserve the board that is being played
     this.board = new GameBoard(board_rows, board_cols, mine_count, preset_index);
-	this.cheatBoard = this.board;
+    // cheat board
+    this.cheatBoard = this.board;
     // build game board upon good config
     this.board.buildGameBoard();
     // call function to ready game start modal
@@ -68,14 +69,18 @@ class GameManager {
     // calls function to ready config modal
     this.modal_manager.operationConfig();
   }
-
+/**
+* Preserves the current game
+* Uncovers the game, showing mines, spaces and numbers
+* Gets called when button "Cheat" gets clicked
+*/
 cheatMode(){
   this.board.hasCheated = true;
   if(this.inCheatMode == false)
   {
-       this.storedPercent = this.board.percent_bar.getPercent();
+       this.storedPercent = this.board.percent_bar.getPercent(); // preserves percentage bar
 	  var table = document.getElementById('table_game_board');
-		for (var i = 0; i < this.board.num_rows; i++) {
+		for (var i = 0; i < this.board.num_rows; i++) { // preserves current game
 			var row = table.rows[i];
 			for (var j = 0; j < this.board.num_cols; j++) {
 				var cell = row.cells[j];
@@ -94,6 +99,11 @@ cheatMode(){
   }
 }
 
+	/**
+	* Gets called when uncheat is clicked
+	* Goes back to current game
+	*/
+	
 goBack(){
   if(this.inCheatMode == true)
 	  {
