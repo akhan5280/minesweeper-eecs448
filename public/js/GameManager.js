@@ -12,10 +12,12 @@ class GameManager {
 
     // stores current game board object
     this.board;
-	this.inCheatMode = false;
-	this.revealedArray = [];
-	this.flaggedArray = [];
-     this.storedPercent = 0;
+    
+    this.inCheatMode = false;
+    // Array that stores the current game board with the revealed spaces
+    this.revealedArray = [];
+    this.flaggedArray = [];
+    this.storedPercent = 0;
     // creates modal manager object
     this.modal_manager = new ModalManager();
 
@@ -51,7 +53,7 @@ class GameManager {
 
     // create new instance of game board to allow user to cheat and to preserve the board that is being played
     this.board = new GameBoard(board_rows, board_cols, mine_count, preset_index);
-    // cheat board
+    // cheat board that will be displayed if user clicks cheat button
     this.cheatBoard = this.board;
     // build game board upon good config
     this.board.buildGameBoard();
@@ -108,7 +110,7 @@ goBack(){
   if(this.inCheatMode == true)
 	  {
 	  this.board.updateGameBoard();
-    this.board.percent_bar.resetBar();
+    	  this.board.percent_bar.resetBar();
 	  var table = document.getElementById('table_game_board');
 
 		for (var i = 0; i < this.revealedArray.length; i++) {
@@ -205,8 +207,6 @@ goBack(){
 
   }
 
-
-
   /**
    * helper function - if this was a first click, then start the Stopwatch
    */
@@ -219,7 +219,6 @@ goBack(){
       this.board.first_click = false;
     }
   }
-
 
 
   /**
@@ -253,15 +252,12 @@ goBack(){
     )
   }
 
-
-
   /**
     * Presents lose game modal
   */
   loseGame() {
     this.modal_manager.gameLoseModal('show');
   }
-
 
 
   /**
@@ -284,7 +280,6 @@ goBack(){
     )
 
   }
-
 
 
   /**
