@@ -172,7 +172,6 @@ class GameBoard {
   }
 
 
-
   /**
     * Updates flag count according to operation
     * @param {String} operation - increment or decrement flag count
@@ -197,7 +196,6 @@ class GameBoard {
 
     this.updateFlagDisplay();
   }
-
 
 
   /**
@@ -329,7 +327,6 @@ class GameBoard {
   }
 
 
-
   /**
    * Displays the cell value on the game_board
    * @param {Object} cell - DOM object of the cell that was clicked
@@ -346,7 +343,6 @@ class GameBoard {
 
     this.percent_bar.increaseProgress();
   }
-
 
 
   /**
