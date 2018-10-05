@@ -62,9 +62,17 @@ class HighScoresViewer{
       var new_rank = new_row.insertCell(0);
       var new_name = new_row.insertCell(1);
       var new_score = new_row.insertCell(2);
+      if(i==0)
+      {
+        new_rank.innerHTML = "The Bestest TM";
+        new_name.innerHTML = this.json_caller.latest[preset_index]["scores"][i].user_name;
+        new_score.innerHTML = this.json_caller.latest[preset_index]["scores"][i].user_score;
+      }
+      else{
       new_rank.innerHTML = (i + 1);
       new_name.innerHTML = this.json_caller.latest[preset_index]["scores"][i].user_name;
       new_score.innerHTML = this.json_caller.latest[preset_index]["scores"][i].user_score;
+      }
     }
   }
 }
