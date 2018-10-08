@@ -38,8 +38,8 @@ class GameBoard {
     }
   }
 
-// displays board to allow user to cheat 
- 
+// displays board to allow user to cheat
+
   displayBoard() {
     for(var i = 0; i < this.num_rows; i++) {
       for(var j = 0; j < this.num_cols; j++) {
@@ -63,6 +63,7 @@ class GameBoard {
   }
   /**
     * Fills board array with number values and mines
+    * @param {Object} cell - DOM object of the cell that was clicked
   */
   populateGameBoard(cell) {
     let firstRow = Number(cell.getAttribute('row'));
